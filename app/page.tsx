@@ -7,20 +7,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const fetchQuote = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch("/api/quote");
-      const data = await res.json();
-      console.log(data); // ← vérifier structure
-      setQuote(data.q);
-      setAuthor(data.a);
-    } catch (err) {
-      console.error("Erreur fetch:", err);
-      setQuote("Une erreur est survenue.");
-      setAuthor("");
-    } finally {
-      setLoading(false);
-    }
+    const res = await fetch("/api/quote");
+    const data = await res.json();
+    setQuote(data.q);
+    setAuthor(data.a);
+
   };
 
   useEffect(() => {
@@ -46,4 +37,5 @@ export default function Home() {
       </button>
     </main>
   );
+
 }
