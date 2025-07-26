@@ -11,7 +11,7 @@ export default function Home() {
     const data = await res.json();
     setQuote(data.q);
     setAuthor(data.a);
-
+    setLoading(false);
   };
 
   useEffect(() => {
